@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import "./App.css"
 import Login from "./components/login/login"
 import Home from "./components/home/home"
-import ProtectedRoute from './protected.route/protected.route'
+import ProtectedRoute from './components/protected.route/protected.route'
 import {BrowserRouter, Route, Switch} from "react-router-dom"
 import 'bootstrap/dist/css/bootstrap.min.css';
 
