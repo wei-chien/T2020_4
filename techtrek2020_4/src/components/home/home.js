@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import auth from '../../auth/auth'
+// import auth from '../../auth/auth'
 import './home.css'
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import axios from 'axios';
-import EmpService from '../api/empservice'
+// import EmpService from '../api/empservice'
 
 
 am4core.useTheme(am4themes_animated);
@@ -13,41 +13,41 @@ export default class Home extends Component {
 
     constructor() {
         super()
-        console.log(auth.isAuthenticated())
+        // console.log(auth.isAuthenticated())
         this.state =
         {
-            part: [{
-                country: "Singapore",
-                litres: 33
+            accounts: [{
+                accountId: 123,
+                balance: 3300
             }, {
-                country: "USA",
-                litres: 46
+                accountId: 124,
+                balance: 9900
             }, {
-                country: "abc",
-                litres: 67
+                accountId: 125,
+                balance: 330
             }],
-            employees: [{
-                id: 123,
-                name: "a",
-            },
-            {
-                id: 124,
-                name: "abc"
-            }, {
-                id: 125,
-                name: "Tim"
-            }
+            // employees: [{
+            //     id: 123,
+            //     name: "a",
+            // },
+            // {
+            //     id: 124,
+            //     name: "abc"
+            // }, {
+            //     id: 125,
+            //     name: "Tim"
+            // }
 
-            ]
+            // ]
 
         }
     }
-    retrieveEmpList() {
-        EmpService.getListOfEmployees()
-        .then(response => {console.log(response)})
-        .catch(error => {console.log("Something went wrong", error)})
-        // EmpService.sayHi()
-    }
+    // retrieveEmpList() {
+    //     EmpService.getListOfEmployees()
+    //     .then(response => {console.log(response)})
+    //     .catch(error => {console.log("Something went wrong", error)})
+    //     // EmpService.sayHi()
+    // }
 
     componentDidMount() {
 
@@ -85,7 +85,7 @@ export default class Home extends Component {
             <div>
                 <div className="grid-container">
                     <div className="item1"><h1 align="center">Home</h1></div>
-                    <div className="item2"> {this.state.employees.map(employ => <li>{employ.id}</li>)}</div>
+                    <div className="item2"> </div>
                     <div className="item3"><div id="chartdiv"></div></div>
                     <div className="item4"><ul>
                         <button onClick={this.retrieveEmpList}>get list</button>
@@ -95,13 +95,13 @@ export default class Home extends Component {
                 </div>
 
 
-                <button className="logoutBtn btn" onClick={() => {
+                {/* <button className="logoutBtn btn" onClick={() => {
                     auth.logout(() => {
                         this.props.history.push("/");
                     }
                     )
                 }
-                }>Logout</button>
+                }>Logout</button> */}
             </div>
         )
     }
