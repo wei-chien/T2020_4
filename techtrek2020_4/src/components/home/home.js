@@ -14,18 +14,19 @@ export default class Home extends Component {
     constructor() {
         super()
         // console.log(auth.isAuthenticated())
+
         this.state =
         {
             accounts: [{
-                accountId: 123,
+                accountId: 123.242,
                 balance: 3300
             }, {
-                accountId: 124,
+                accountId: 124.222,
                 balance: 9900
             }, {
-                accountId: 125,
+                accountId: 125.882,
                 balance: 330
-            }],
+            }]
             // employees: [{
             //     id: 123,
             //     name: "a",
@@ -55,7 +56,7 @@ export default class Home extends Component {
 
         // Add data
         chart.data =
-            this.state.part
+            this.state.accounts
 
             ;
 
@@ -84,12 +85,22 @@ export default class Home extends Component {
         return (
             <div>
                 <div className="grid-container">
-                    <div className="item1"><h1 align="center">Overview</h1></div>
-                    <div className="item2"> </div>
-                    <div className="item3"><div id="chartdiv"></div></div>
-                    <div className="item4"> </div>
-                    <div className="item5">Footer</div>
-
+                    <div className="item1"><ul>
+                        <li>Accounts</li>
+                        <li>Transactions</li>
+                        <li>Cards</li>
+                        <br></br> <br></br>
+                        <li>Logout</li>
+                    </ul></div>
+                    <div className="item2"> <h1>Account Summary</h1><div id="chartdiv"></div> </div>
+                    <div className="item4">Messages</div>
+                    <div className="item3"><span className="foot">Contact<br></br>
+                        Locate<br></br>Contact</span>
+                        <span className="foot">Placeholders <br></br>More Placeholders<br></br>Footers</span>
+                        <span className="foot">Contact<br></br>
+                        Locate<br></br>Contact</span>
+                        <span className="foot">Placeholders <br></br>More Placeholders<br></br>Footers</span>
+                    </div>
                 </div>
 
                 {/* <button className="logoutBtn btn" onClick={() => {
