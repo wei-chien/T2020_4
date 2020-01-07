@@ -11,17 +11,37 @@
     'footer footer footer footer footer footer footer'
     'footer footer footer footer footer footer footer';
   grid-gap: 20px;
-  background-color: rgb(165, 165, 165);
+  background-color: white;
   padding: 20px;
-  height: 100vh;
+  height: 120vh;
 }
 .grid-container > div {
-  background-color: rgb(219, 218, 218);
   text-align: center;
   padding: 20px 0;
   font-size: 21px;
-  box-shadow: 4px 4px 4px grey;
+  box-shadow: 4px 4px 4px rgb(90, 89, 89);
   transition: 0.3s;
+}
+.item3{
+  background-color: rgba(0, 0, 0, 0.493);
+  color: white;
+  font-size:15px;
+  display:inline-block;
+}
+.item3 span{
+  display: inline-block
+}
+.item1{
+  background-color: rgb(238, 231, 231);
+}
+.item2{
+  background-color:  rgb(238, 231, 231);
+}
+.item4{
+  background-color:  rgb(238, 231, 231);
+}
+.foot{
+  margin:0 5% 0 2%;
 }
 
 #chartdiv{

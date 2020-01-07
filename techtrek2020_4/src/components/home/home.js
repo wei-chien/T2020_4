@@ -1,4 +1,4 @@
-import React,{ Component } from 'react'
+import React, { Component } from 'react'
 // import auth from '../../auth/auth'
 import './home.css'
 import * as am4core from "@amcharts/amcharts4/core";
@@ -14,17 +14,17 @@ export default class Home extends Component {
     constructor() {
         super()
         // console.log(auth.isAuthenticated())
-       
+
         this.state =
         {
             accounts: [{
-                accountId: 123,
+                accountId: 123.242,
                 balance: 3300
             }, {
-                accountId: 124,
+                accountId: 124.222,
                 balance: 9900
             }, {
-                accountId: 125,
+                accountId: 125.882,
                 balance: 330
             }]
             // employees: [{
@@ -89,10 +89,18 @@ export default class Home extends Component {
                         <li>Accounts</li>
                         <li>Transactions</li>
                         <li>Cards</li>
-                        </ul></div>
+                        <br></br> <br></br>
+                        <li>Logout</li>
+                    </ul></div>
                     <div className="item2"> <h1>Account Summary</h1><div id="chartdiv"></div> </div>
                     <div className="item4">Messages</div>
-                    <div className="item3">Footer</div>
+                    <div className="item3"><span className="foot">Contact<br></br>
+                        Locate<br></br>Contact</span>
+                        <span className="foot">Placeholders <br></br>More Placeholders<br></br>Footers</span>
+                        <span className="foot">Contact<br></br>
+                        Locate<br></br>Contact</span>
+                        <span className="foot">Placeholders <br></br>More Placeholders<br></br>Footers</span>
+                    </div>
                 </div>
 
                 {/* <button className="logoutBtn btn" onClick={() => {
