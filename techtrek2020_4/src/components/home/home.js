@@ -4,7 +4,7 @@ import './home.css'
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
-import axios from 'axios';
+// import axios from 'axios';
 // import EmpService from '../api/empservice'
 
 
@@ -61,8 +61,8 @@ export default class Home extends Component {
 
         // Add and configure Series
         let pieSeries = chart.series.push(new am4charts.PieSeries());
-        pieSeries.dataFields.value = "litres";
-        pieSeries.dataFields.category = "country";
+        pieSeries.dataFields.value = "balance";
+        pieSeries.dataFields.category = "accountId";
         pieSeries.slices.template.stroke = am4core.color("#fff");
         pieSeries.slices.template.strokeWidth = 2;
         pieSeries.slices.template.strokeOpacity = 1;
@@ -84,16 +84,13 @@ export default class Home extends Component {
         return (
             <div>
                 <div className="grid-container">
-                    <div className="item1"><h1 align="center">Home</h1></div>
+                    <div className="item1"><h1 align="center">Overview</h1></div>
                     <div className="item2"> </div>
                     <div className="item3"><div id="chartdiv"></div></div>
-                    <div className="item4"><ul>
-                        <button onClick={this.retrieveEmpList}>get list</button>
-                        {this.state.employees.map(employees => <li>{employees.name}</li>)}
-                    </ul></div>
+                    <div className="item4"> </div>
                     <div className="item5">Footer</div>
-                </div>
 
+                </div>
 
                 {/* <button className="logoutBtn btn" onClick={() => {
                     auth.logout(() => {
