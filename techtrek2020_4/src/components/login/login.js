@@ -19,11 +19,19 @@ import Logo from "../../assets/img/dbs_logo.png"
 class Login extends Component {
   constructor() {
     super();
+    this.persons = [
+        {user: "marytan",
+         password: "1234"},
+         {user: "limzeyang",
+         password: "12345"},
+         {user: "ahmadfarhan",
+         password: "123456"}   
+    ]
     this.state = {
       isChecked: true,
-      loginEmail: "",
+      loginUser: "",
       loginPassword: "",
-      persons: []
+      customerID: 0,
     };
   }
 
@@ -33,55 +41,55 @@ class Login extends Component {
     }));
   };
 
+ authenticated(username, password) {
+    
+    for (let i = 0; i < this.persons.length; ++i)
+    {
+        console.log(this.persons[i].user, this.persons[i].password)
+        if(this.persons[i].user.trim() === username && this.persons[i].password === password)
+        {
+            return true;
+        }
+    }
+    return false;
+ }
+
   loginClick = e => {
-    if (
-      this.state.loginEmail == "test@hotmail.com" &&
-      this.state.loginPassword == "12345678"
-    ) {
+    console.log(this.state.loginUser, this.state.loginPassword)
+    if (this.authenticated(this.state.loginUser, this.state.loginPassword)) {
+      console.log("authenticated")
+      try {
+        // retrieve customer id via api call once authenticated
+        axios({
+          url: 'http://techtrek-api-gateway.ap-southeast-1.elasticbeanstalk.com/customers/'+this.state.loginUser,
+          method: 'get',
+          headers: {
+              'Identity': 'T34',
+              'Token': 'd79274df-a679-4b34-9aa9-7a857c22c48a'
+          }
+       }).then(response => {
+             console.log(response.data.customerId);
+             this.customerID = response.data.customerId;
+             console.log(this.customerID);
+          });
+      } catch(e) {
+          console.log(e);
+      }  
       this.props.history.push("/home");
-    } else if (this.state.loginEmail == "" || this.state.loginPassword == "") {
+    } else if (this.state.loginUser == "" || this.state.loginPassword == "") {
       alert("Missing login information");
-    } else if (this.state.loginEmail !== "test@hotmail.com") {
-      alert("Incorrect email address");
-    } else if (this.state.loginPassword !== "12345678") {
-      alert("Incorrect password");
     }
   };
 
-  handleEmailChange = e => {
-    this.setState({ loginEmail: e.target.value });
+  handleUserChange = e => {
+    this.setState({ loginUser: e.target.value });
   };
 
   handlePasswordChange = e => {
     this.setState({ loginPassword: e.target.value });
   };
 
-  //API call
-  async componentDidMount() {
-    try {
-       //Api call with parameters.
-       //axios.get('https://site.com/?name=Flavio')
-      // axios.get("https://site.com/", {
-      //   params: {
-      //     name: "Flavio"
-      //   }
-      // });
-      axios
-        .get("http://dummy.restapiexample.com/api/v1/employees")
-        .then(res => {
-          //check value
-          const persons = res.data;
-          this.setState({ persons });
-        });
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
   render() {
-    if (this.state.persons.length > 0) {
-      console.log(this.state.persons[0]);
-    }
     return (
       <div className="container">
         <Row className="full-height-vh">
@@ -98,12 +106,12 @@ class Login extends Component {
                   <FormGroup>
                     <Col md="12">
                       <Input
-                        onChange={this.handleEmailChange}
-                        type="email"
+                        onChange={this.handleUserChange}
+                        type="user"
                         className="form-control"
-                        name="inputEmail"
-                        id="inputEmail"
-                        placeholder="Email"
+                        name="inputUser"
+                        id="inputUser"
+                        placeholder="User"
                         required
                       />
                     </Col>
